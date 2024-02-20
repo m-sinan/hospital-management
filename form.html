@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     
+        <div>
+        <input type="text" id="use" placeholder="username">
+        <input type="password"  id="pas" placeholder="password">
+        <input type="submit"  onclick="Submit()">
+      </div>
+  
+
+
+    <script>
+        function Submit() {
+        var a = document.getElementById('use').value;
+         var b = document.getElementById('pas').value;
+         var c = "jhon@";
+         var d = "123";
+         if (a == c && b == d && a > "0" && b > "0") {
+           window.location.href ="HOME.html";
+           return false;
+         } else {
+           window.alert("incorrect");
+           return false;
+         }
+       }
+
+
+        </script>
+</body>
+</html>

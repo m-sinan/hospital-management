@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors</title>
+  <link rel="stylesheet" href="/docterp/css/styles.css" />
+  <link rel="stylesheet" href="/adminp/css/style.css">
+</head>
+
+<body>
+  <%- include('admin-sidebar') %>
+  <div class="container pt-5">
+    <div class="card">
+      
+      <div class="card-body">
+        <h1 class="fw-semibold mb-4">Blog</h1>
+        <div class="card">
+          <div class="card-body">
+          <form method="POST" enctype="multipart/form-data">  
+              <div class="row mb-3">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                  <label for="exampleInputEmail1" class="form-label">Blog Title</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pro" value="">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <label for="exampleInputEmail1" class="form-label">Blog Image</label>
+                  <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="img">
+                  <img src="/docterp/images/products/" alt="" width="100">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                  <label for="exampleInputEmail1" class="form-label">Blog Description</label>
+                  <textarea class="form-control" id="productDescription" name="dis" rows="2" cols="50"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" name="submitp">Submit</button>
+              <a href="/doc/apro" class="btn btn-danger">Reset</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 0;">
+      <% ado.forEach(doctor => { %>
+      <div class="col-lg-3">
+        <div class="card h-100" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop">
+          <img src="/userp/img/Dr.JHON.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= doctor.name %> <br> <span class="fs-2" id="id"> (<%= doctor._id %>)</span> </h5>
+            <h6 class="card-title">(<%= doctor.Department %>)</h6>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+      <!-- edit and create popup -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <input type="file" class="form-control mb-3 text-white" id="doctorimg" name="img">
+                <label for="" class="text-white">Id :</label>
+                <input type="text" class="form-control mb-3 text-white" name="id" id="id">
+                <label for="" class="text-white">Doctor Name :</label>
+                <input type="text" class="form-control mb-3 text-white" name="doctorname" id="doctorname">
+                <label for="" class="text-white">Password :</label>
+                <input type="password" class="form-control mb-3 text-white" name="password" id="password">
+                <label for="" class="text-white">Department :</label>
+                <input type="text" class="form-control mb-3 text-white" name="Department" id="Department">
+                <label for="" class="text-white">Address :</label>
+                <input type="text" class="form-control mb-3 text-white" name="Address" id="Address">
+                <label for="" class="text-white">Phone :</label>
+                <input type="number" class="form-control mb-3 text-white" name="Phone" id="Phone">
+                <label for="" class="text-white">Email :</label>
+                <input type="email" class="form-control mb-3 text-white" name="email" id="email">
+                <label for="" class="text-white" class="mb-3 text-white">Blood group :</label>
+                <select class="form-select mb-3 text-white" aria-label="Default select example" id="Blood">
+                  <option value="1" class="text-dark">A+</option>
+                  <option value="2" class="text-dark">A-</option>
+                  <option value="3" class="text-dark">B+</option>
+                  <option value="1" class="text-dark">B-</option>
+                  <option value="2" class="text-dark">o+</option>
+                  <option value="3" class="text-dark">o-</option>
+                  <option value="1" class="text-dark">AB+</option>
+                  <option value="2" class="text-dark">AB-</option>
+                  <option value="3" class="text-dark">OB+</option>
+                  <option value="1" class="text-dark">OB-</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/docterp/js/app.min.js"></script>
+    <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/docterp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/docterp/js/sidebarmenu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

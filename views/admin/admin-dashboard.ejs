@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Today Appointments</title>
+    <link rel="stylesheet" href="/docterp/css/styles.css" />
+    <link rel="stylesheet" href="/adminp/css/style.css">
+</head>
+
+<body>
+    <%- include('admin-sidebar') %>
+        <div class="row p-5 pb-0 m-0">
+            <div class="col-lg-3 col-sm-6 col-6 p-1">
+                <div class="card shadow p-3 w-100 h-100">
+                    <h3 class="fw-bolder text-center pt-3"> <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-person-gear" viewBox="0 0 16 16">
+                            <path
+                                d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
+                        </svg> Doctors</h3>
+                    <hr>
+                    <h1 class="fw-bolder text-center">1</h1>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6 p-2">
+                <div class="card shadow p-3 w-100 h-100">
+                    <h4 class="fw-bolder text-center pt-3"> <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                            <path
+                                d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                            <path
+                                d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
+                        </svg> Staffs</h4> <br>
+                    <hr>
+                    <h1 class="fw-bolder text-center">1</h1>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6 p-2">
+                <div class="card shadow p-3 w-100 h-100">
+                    <h4 class="fw-bolder text-center pt-3"> <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-hospital" viewBox="0 0 16 16">
+                            <path
+                                d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1zM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25z" />
+                            <path
+                                d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1zm2 14h2v-3H7zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm0-14H6v1h4zm2 7v7h3V8zm-8 7V8H1v7z" />
+                        </svg> rooms</h4>
+                    <hr>
+                    <h1 class="fw-bolder text-center">1</h1>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-6 p-2">
+                <div class="card shadow p-3 w-100 h-100">
+                    <h4 class="fw-bolder text-center pt-3"> <i class="ti ti-users"></i> Patients</h4><br>
+                    <hr>
+                    <h1 class="fw-bolder text-center">1</h1>
+                </div>
+            </div>
+        </div>
+        <!-- graph -->
+        <div class="row m-0 pt-3">
+            <div class="col-lg-7">
+                    <div class="card w-100 p-5">
+                        <div class="card-body">
+                            <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                <div class="mb-3 mb-sm-0">
+                                    <h5 class="card-title fw-semibold">Overview</h5>
+                                </div>
+                                <!-- <div>
+                                    <select class="form-select">
+                                        <option value="1">March 2023</option>
+                                        <option value="2">April 2023</option>
+                                        <option value="3">May 2023</option>
+                                        <option value="4">June 2023</option>
+                                    </select>
+                                </div> -->
+                            </div>
+                            <!-- <div id="chart"></div> -->
+                            <h6>Appointments:</h6>
+                            <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 10%"></div>
+                              </div>
+                              <h6>Surgerys:</h6>
+                              <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 5%"></div>
+                              </div>
+                              <!-- <h6>:</h6>
+                              <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 50%"></div>
+                              </div>
+                              <h6>Appointments:</h6>
+                              <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 75%"></div>
+                              </div>
+                              <h6>Appointments:</h6>
+                              <div class="progress mb-3" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 100%"></div>
+                              </div> -->
+                        </div>
+                    </div>
+        </div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="/adminp/image/Dr.JHON.jpg" alt="" width="100%">
+                        </div>
+                        <div class="col-lg-12 ">
+                            <h4 class="fw-bolder text-center">dr.jhon</h4>
+                            <hr>
+                            <h1 class="fw-bolder px-2">This month leave : <span class="text-danger" >3</span> day</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- <script src="/docterp/libs/jquery/dist/jquery.min.js"></script> -->
+        <script src="/docterp/js/app.min.js"></script>
+
+        <script src="/docterp/libs/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="/docterp/js/dashboard.js"></script>
+</body>
+
+</html>

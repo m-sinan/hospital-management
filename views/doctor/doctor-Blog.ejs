@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin-customer</title>
+  <link rel="shortcut icon" type="image/png" href="/docterp/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/docterp/css/styles.min.css" />
+</head>
+
+<body>
+  <%- include('Sidebar') %>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="fw-semibold mb-4">Blog</h1>
+        <div class="card">
+          <div class="card-body">
+          <form method="POST" enctype="multipart/form-data">  
+              <div class="row mb-3">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                  <label for="exampleInputEmail1" class="form-label">Blog Title</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pro" value="">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <label for="exampleInputEmail1" class="form-label">Blog Image</label>
+                  <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="img">
+                  <img src="/docterp/images/products/" alt="" width="100">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-7 col-md-7 col-sm-7">
+                  <label for="exampleInputEmail1" class="form-label">Blog Description</label>
+                  <textarea class="form-control" id="productDescription" name="dis" rows="2" cols="50"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" name="submitp">Submit</button>
+              <a href="/doc/apro" class="btn btn-danger">Reset</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- table begin -->
+        <div class="card w-100">
+          <div class="card-body p-4">
+            <h5 class="card-title fw-semibold mb-4">Blogs</h5>
+            <div class="table-responsive">
+              <table class="table text-nowrap mb-0 align-middle">
+                <thead class="text-dark fs-4">
+                  <tr>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Id</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Blog Title</h6>
+                    </th>
+                    <!-- <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Price</h6>
+                    </th> -->
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Description</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Image</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Edit</h6>
+                    </th>
+                    <th class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0">Delete</h6>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
+                    <td class="border-bottom-0">
+                      <p class="mb-0 fw-normal">blog 1</p>                         
+                    </td>
+                    <!-- <td class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0 fs-4">$20</h6>
+                    </td> -->
+                    <td class="border-bottom-0">
+                      <p class="mb-0 fw-normal">best blog ever</p>
+                    </td>
+                    <td class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0 fs-4"><img src="/docterp/images/products/s11.jpg" alt="product image" width="50"></h6>
+                    </td>
+                    <td class="border-bottom-0">
+                    <a href="/doc/apro"><span><i class="ti ti-edit btn btn-outline-success"></i></span></a>
+                    </td>
+                    <td class="border-bottom-0">
+                    <a href="/doc/apro"><span><i class="ti ti-trash btn btn-outline-danger"></i></span></a>
+                    </td>
+                  </tr>                        
+                </tbody>  
+
+              </table>
+            </div>
+          </div>
+        </div>
+<!-- table end -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/docterp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/docterp/js/sidebarmenu.js"></script>
+  <script src="/docterp/js/app.min.js"></script>
+  <script src="/docterp/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/docterp/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/docterp/js/dashboard.js"></script>
+</body>
+</html>

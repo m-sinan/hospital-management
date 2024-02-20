@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MES Admin-Dashboard</title>
+  <link rel="shortcut icon" type="image/png" href="/docterp/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/docterp/css/styles.min.css" />
+</head>
+
+<body>
+
+  <%- include('Sidebar') -%>
+    <div class="container-fluid">
+      <!--  Row 1 -->
+      <div class="row">
+        <div class="col-lg align-items-strech">
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col-lg-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
+                      style="color: #1A76D1;" width="20" height="" fill="currentColor" class="bi bi-people-fill"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                    </svg></div>
+                  <h5 class="card-title text-center fw-bolder">Today Appointments</h5>
+                  <hr>
+                  <h1 class="card-text text-center pt-3 fw-bolder">11</h1>
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
+                      style="color: #1A76D1;" width="20" height="20" fill="currentColor" class="bi bi-person-check-fill"
+                      viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0" />
+                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg></div>
+                  <h5 class="card-title text-center fw-bolder">Meetings</h5>
+                  <hr>
+                  <h1 class="card-text text-center pt-3 fw-bolder">2</h1>
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
+                      style="color: #1A76D1;" width="20" height="20" fill="currentColor" class="bi bi-scissors"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61zm2.5 10a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0m7 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
+                    </svg></div>
+                  <h5 class="card-title text-center fw-bolder">Surgery</h5>
+                  <hr>
+                  <h1 class="card-text text-center pt-3 fw-bolder">1</h1>
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
+                      style="color: #1A76D1;" width="20" height="20" fill="currentColor" class="bi bi-card-checklist"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
+                      <path
+                        d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0" />
+                    </svg></div>
+                  <h5 class="card-title fw-bolder">Total Appointment</h5>
+                  <hr>
+                  <h1 class="card-text text-center pt-3 fw-bolder">11</h1>
+                </div>
+                <div class="card-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Appointment Overview</h5>
+                  </div>
+                  <div>
+                    <select class="form-select">
+                      <option value="1">March 2023</option>
+                      <option value="2">April 2023</option>
+                      <option value="3">May 2023</option>
+                      <option value="4">June 2023</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="chart"></div>
+              </div>
+            </div> -->
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <h5 class="card-title fw-semibold">Recent login</h5>
+                </div>
+                <ul class="timeline-widget mb-0 position-relative mb-n5">
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1 ">login</div>
+                  </li>
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1 ">logout
+                    </div>
+                  </li>
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1 ">login</div>
+                  </li>
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1 ">logout
+                    </div>
+                  </li>
+                  <li class="timeline-item d-flex position-relative overflow-hidden">
+                    <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
+                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                      <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                      <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                    </div>
+                    <div class="timeline-desc fs-3 text-dark mt-n1 ">login</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <h5 class="card-title fw-semibold mb-4">Recent op</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <!-- <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Id</h6>
+                        </th> -->
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Name</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Problem</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Priority</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Recommended</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <% dpat.forEach(patient=> { %>
+
+                        <!-- <tr>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">101</h6>
+                        </td> -->
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1">
+                            <%= patient.name %>
+                          </h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">
+                            <%= patient.problem %>
+                          </p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary  rounded-3 fw-semibold" style="background-color: #1A76D1;">
+                              <%= patient.priority %>
+                            </span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">
+                            <%= patient.recommended %>
+                          </h6>
+                        </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="py-6 px-6 text-center">
+          <p class="mb-0 fs-4">Design and Developed by sinan.com</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/docterp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/docterp/js/sidebarmenu.js"></script>
+    <!-- <script src="/docterp/js/app.min.js"></script>
+  <script src="/docterp/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/docterp/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/docterp/js/dashboard.js"></script> -->
+</body>
+
+</html>

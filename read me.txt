@@ -1,0 +1,7 @@
+mes hospital managment
+
+front-end: html5,css3,bootstrap5.3,javascript
+back-end: express
+database: mongodb
+
+abstract:
