@@ -51,7 +51,7 @@
                 <thead class="text-dark fs-4">
                   <tr>
                     <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Id</h6>
+                      <h6 class="fw-semibold mb-0">no</h6>
                     </th>
                     <th class="border-bottom-0">
                       <h6 class="fw-semibold mb-0">Blog Title</h6>
@@ -75,16 +75,18 @@
                 </thead>
 
                 <tbody>
+                  <span class="text-white"><%= a=1; %></span>
+                  <% dblo.forEach(blog => { %>
                   <tr>
-                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
+                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0"><%= a %></h6></td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">blog 1</p>                         
+                      <p class="mb-0 fw-normal"><%= blog.name %></p>                         
                     </td>
                     <!-- <td class="border-bottom-0">
                       <h6 class="fw-semibold mb-0 fs-4">$20</h6>
                     </td> -->
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">best blog ever</p>
+                      <p class="mb-0 fw-normal"><%= blog.description %></p>
                     </td>
                     <td class="border-bottom-0">
                       <h6 class="fw-semibold mb-0 fs-4"><img src="/docterp/images/products/s11.jpg" alt="product image" width="50"></h6>
@@ -95,9 +97,10 @@
                     <td class="border-bottom-0">
                     <a href="/doc/apro"><span><i class="ti ti-trash btn btn-outline-danger"></i></span></a>
                     </td>
-                  </tr>                        
+                  </tr>  
+                  <% a++; %>
+                  <% }); %>                      
                 </tbody>  
-
               </table>
             </div>
           </div>

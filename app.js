@@ -118,6 +118,18 @@ app.get('/asta', async (req, res) => {
       await client.close();
   }
 });
+app.get('/dblo', async (req, res) => {
+  try {
+      await client.connect();
+      const db = client.db('hospital');
+      const collection = db.collection('staffs');
+
+      const dblo = await collection.find().toArray();
+      res.render('./doctor/doctor-Blog', { dblo });
+  } finally {
+      await client.close();
+  }
+});
 // route
 
 app.listen(port, () => {

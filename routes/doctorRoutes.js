@@ -7,9 +7,9 @@ router.get('/dhom', (req, res) => {
 router.get('/dapp', (req, res) => {
     res.render('doctor/doctor-Appointments');
 })
-router.get('/dblo', (req, res) => {
-    res.render('doctor/doctor-Blog');
-})
+// router.get('/dblo', (req, res) => {
+//     res.render('doctor/doctor-Blog');
+// })
 // router.get('/ddas', (req, res) => {
 //     res.render('doctor/doctor-dashboard');
 // })
