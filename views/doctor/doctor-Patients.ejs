@@ -36,7 +36,7 @@
                         <h5 class="fw-bolder mb-0">Phone</h5>
                       </th>
                       <th class="border-bottom-0">
-                        <h5 class="fw-bolder mb-0">Problem</h5>
+                        <h5 class="fw-bolder mb-0">Sex</h5>
                       </th>
                       <th class="border-bottom-0">
                         <h5 class="fw-bolder mb-0">Priority</h5>
@@ -47,118 +47,150 @@
                       <!-- <th class="border-bottom-0">
                         <h5 class="fw-bolder mb-0">Time</h5>
                       </th> -->
-                      <th class="border-bottom-0">
-                        <h5 class="fw-bolder mb-0">Recommended</h5>
-                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <span class="text-white"><%= a=1; %></span>
-            <% dpat.forEach(patient => { %>
-                    <tr>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0 "><%= a %></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1"><%= patient.name %></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal"><%= patient.age %></p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal"><%= patient.phone %></p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1"><%= patient.problem %></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <div class="d-flex align-items-center gap-2">
-                          <span class="badge bg-primary rounded-3 fw-semibold"><%= patient.priority %></span>
-                        </div>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="fw-semibold mb-0 "><%= patient.date %></p>
-                      </td>
-                      <!-- <td class="border-bottom-0">
+                    <span class="text-white">
+                      <%= a=1; %>
+                    </span>
+                    <% dpat.forEach(patient=> { %>
+                      <tr>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 ">
+                            <%= a %>
+                          </h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1">
+                            <%= patient.pname %>
+                          </h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">
+                            <%= patient.page %>
+                          </p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">
+                            <%= patient.pphone %>
+                          </p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1">
+                            <%= patient.problem %>
+                          </h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary rounded-3 fw-semibold">
+                              <%= patient.priority %>
+                            </span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="fw-semibold mb-0 ">
+                            <%= patient.pdate %>
+                          </p>
+                        </td>
+                        <!-- <td class="border-bottom-0">
                         <p class="fw-semibold mb-0 "><%= patient.time %></p>
                       </td> -->
-                      <td class="border-bottom-0">
-                        <p class="fw-semibold mb-0 "><%= patient.recommended %><br> <span class="btn btn-none text-info"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal<%= patient._id %>">
-                            more info
-                          </span> </p>
-                      </td>
+                        <td class="border-bottom-0">
+                          <p class="fw-semibold mb-0 ">
+                            <%= patient.recommended %><br> <span class="btn btn-secondary text-white" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal<%= patient._id %>">
+                                more info
+                              </span>
+                          </p>
+                        </td>
 
-                    </tr>
-                    <div class="modal fade" id="exampleModal<%= patient._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5 fw-bolder text-white bg-info p-2" id="exampleModalLabel"><%= patient.name %></h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </tr>
+                      <div class="modal fade" id="exampleModal<%= patient._id %>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5 fw-bolder text-white bg-info p-2" id="exampleModalLabel">
+                                <%= patient.name %>
+                              </h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h6 class="text-decoration-underline ">Bloodgroup</h6>
+                                  <p>
+                                    <%= patient.bloodgroup %>
+                                  </p>
+                                </div>
+                                <div class="col-12">
+                                  <h6 class="text-decoration-underline ">Address</h6>
+                                  <p>
+                                    <%= patient.address %>
+                                  </p>
+                                </div>
+                                <div class="col-12">
+                                  <h6 class="text-decoration-underline "></h6>
+                                  <p>
+                                    <%= patient.problems%>
+                                  </p>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <h6 class="text-decoration-underline ">description</h6>
+                                    <p>
+                                      <%= patient.description %>
+                                    </p>
+                                  </div>
+                                </div>
+                                <h4 class="text-center">MEDICINE'S</h4>
+                                <div class="row">
+                                  <div class="col">
+                                    <h6 class="text-decoration-underline ">Morning</h6>
+                                    <p>
+                                      <%= patient.morning %>
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <h6 class="text-decoration-underline ">Afternoon</h6>
+                                    <p>
+                                      <%= patient.afternoon %>
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <h6 class="text-decoration-underline ">Night</h6>
+                                    <p>
+                                      <%= patient.night %>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="modal-body">
-                          <div class="row">
-                            <div class="col-12">
-                              <h6 class="text-decoration-underline ">Bloodgroup</h6>
-                              <p><%= patient.bloodgroup %></p>
-                            </div>
-                            <div class="col-12">
-                              <h6 class="text-decoration-underline ">Address</h6>
-                              <p><%= patient.address %></p>
-                            </div>
-                            <div class="col-12">
-                              <h6 class="text-decoration-underline "></h6>
-                              <p><%= patient.problems%></p>
-                            </div>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="text-decoration-underline ">description</h6>
-                              <p><%= patient.description %></p>
-                            </div>
-                          </div>
-                          <h4 class="text-center">MEDICINE'S</h4>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="text-decoration-underline ">Morning</h6>
-                              <p><%= patient.morning %> </p>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="text-decoration-underline ">Afternoon</h6>
-                              <p><%= patient.afternoon %></p>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                              <h6 class="text-decoration-underline ">Night</h6>
-                              <p><%= patient.night %></p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <% a++; %>
-                    <% }); %>
+                      <% a++; %>
+                        <% }); %>
                   </tbody>
                 </table>
                 <!-- Modal -->
+              </div>
             </div>
+            <!-- table end -->
+
+            <!-- popup -->
+
           </div>
-          <!-- table end -->
-
-          <!-- popup -->
-
         </div>
       </div>
-    </div>
-    </div>
     </div>
     <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
     <script src="/docterp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

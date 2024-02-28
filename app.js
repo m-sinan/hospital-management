@@ -3,7 +3,7 @@ const ejs = require('ejs');
 const { MongoClient } = require('mongodb');
 
 const app = express();
-const port = 1000;
+const port = 10000;
 
 // new
 app.use(express.json());
@@ -87,6 +87,31 @@ app.get('/', async (req, res) => {
         await client.close();
     }
 });
+
+//new
+
+app.post('/', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('patients');
+
+        const { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate } = req.body;
+
+        const myobj = { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate };
+        await collection.insertOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/'); // Redirect after successful insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+// new
+
 app.get('/apas', async (req, res) => {
     try {
         await client.connect();
@@ -111,9 +136,9 @@ app.get('/adoc', async (req, res) => {
         await client.close();
     }
 });
+
 // new
-// Handle registration form submission
-// POST route to handle form submission and insert data into MongoDB
+
 app.post('/adoc', async (req, res) => {
     try {
         await client.connect();
@@ -134,8 +159,31 @@ app.post('/adoc', async (req, res) => {
     }
 });
 
-
+// -new
+  
 // new
+app.post('/uapp', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('patients');
+
+        const { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate } = req.body;
+
+        const myobj = { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate };
+        await collection.insertOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/uapp'); // Redirect after successful insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+// -new 
+
 app.get('/asta', async (req, res) => {
     try {
         await client.connect();
@@ -152,7 +200,7 @@ app.get('/dblo', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('hospital');
-        const collection = db.collection('staffs');
+        const collection = db.collection('blog');
 
         const dblo = await collection.find().toArray();
         res.render('./doctor/doctor-Blog', { dblo });
@@ -160,6 +208,44 @@ app.get('/dblo', async (req, res) => {
         await client.close();
     }
 });
+
+//new 
+
+app.post('/dblo', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('blog');
+
+        const { btitle, bimage, bdescription, bdate } = req.body;
+
+        const myobj = { btitle, bimage, bdescription, bdate };
+        await collection.insertOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/dblo'); // Redirect after successful insertion
+    } catch (err) {
+        console.error("Error:", err);
+    } finally {
+        await client.close();
+    }
+});
+
+// -new
+
+app.get('/dapp', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('patients');
+
+        const dapp = await collection.find().toArray();
+        res.render('./doctor/doctor-Appointments', { dapp });
+    } finally {
+        await client.close();
+    }
+});
+
 // route
 
 app.listen(port, () => {

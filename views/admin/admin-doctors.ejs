@@ -15,62 +15,73 @@
     <div class="card">
       
       <div class="card-body">
-        <h1 class="fw-semibold mb-4">New Doctor Adding</h1>
+        <h1 class="fw-semibold mb-4">Doctor Adding</h1>
         <div class="card">
           <div class="card-body">
           <form method="POST" action="/adoc">  
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Name</label>
                   <input type="text" class="form-control" name="dname" id="dname" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor photo</label>
                   <input type="file" class="form-control" name="dimg">
                   <img src="/docterp/images/products/" alt="" width="100">
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor username</label>
                   <input type="text" class="form-control"  name="dusername" id="username" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor password</label>
                   <input type="text" class="form-control" name="dpassword" id="password" >
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Department </label>
                   <input type="text" class="form-control" name="ddepartment" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Address</label>
                   <textarea class="form-control" id="productDescription" name="daddress" rows="2" cols="50"></textarea>
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Email</label>
                   <input type="text" class="form-control" name="demail" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Bloodgroup</label>
-                  <input type="text" class="form-control" name="dbloodgroup" >
+                  <select class="form-select mb-3" aria-label="Default select example" id="Blood">
+                    <option value="1" class="text-dark">A+</option>
+                    <option value="2" class="text-dark">A-</option>
+                    <option value="3" class="text-dark">B+</option>
+                    <option value="1" class="text-dark">B-</option>
+                    <option value="2" class="text-dark">o+</option>
+                    <option value="3" class="text-dark">o-</option>
+                    <option value="1" class="text-dark">AB+</option>
+                    <option value="2" class="text-dark">AB-</option>
+                    <option value="3" class="text-dark">OB+</option>
+                    <option value="1" class="text-dark">OB-</option>
+                  </select>
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Phone</label>
                   <input type="text" class="form-control" name="dphone" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor timing</label>
                   <input type="text" class="form-control" name="dtiming" >
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" value="Submit">Add</button>
+              <button type="submit" class="btn btn-success" value="Submit">Add</button>
               <a href="" class="btn btn-danger">Reset</a>
             </form>
           </div>
@@ -84,14 +95,17 @@
         data-bs-target="#staticBackdrop">
           <img src="/userp/img/Dr.JHON.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title"><%= doctor.dname %> <br> <span class="fs-2" id="id"> (<%= doctor._id %>)</span> </h5>
+            <h1 class="fw-bolder"><%= doctor.dname %></h1>
             <h6 class="card-title">(<%= doctor.ddepartment %>)</h6>
+            <p class="fs-1"> (<%= doctor._id %>)</p> 
+                <button type="submit" class="btn btn-primary" value="Submit">Edit</button>
+                <a href="" class="btn btn-danger">delete</a>
           </div>
         </div>
       </div>
       <% }); %>
       <!-- edit and create popup -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content bg-dark">
@@ -135,8 +149,7 @@
             </div>
           </div>
         </div>
-      </div>
-
+      </div> -->
     </div>
     </div>
     <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>

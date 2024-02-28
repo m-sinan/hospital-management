@@ -4,9 +4,9 @@ const router = express.Router();
 router.get('/dhom', (req, res) => {
     res.render('doctor/doctor-login');
 })
-router.get('/dapp', (req, res) => {
-    res.render('doctor/doctor-Appointments');
-})
+// router.get('/dapp', (req, res) => {
+//     res.render('doctor/doctor-Appointments');
+// })
 // router.get('/dblo', (req, res) => {
 //     res.render('doctor/doctor-Blog');
 // })

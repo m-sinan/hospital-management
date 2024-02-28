@@ -16,26 +16,34 @@
         <h1 class="fw-semibold mb-4">Blog</h1>
         <div class="card">
           <div class="card-body">
-          <form method="POST" enctype="multipart/form-data">  
+          <form method="POST" action="/dblo">  
               <div class="row mb-3">
-                <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="col-lg-8 col-md-8 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Blog Title</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pro" value="">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="btitle" value="">
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Blog Image</label>
-                  <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="img">
+                  <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="bimage">
                   <img src="/docterp/images/products/" alt="" width="100">
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-7 col-md-7 col-sm-7">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Blog Description</label>
-                  <textarea class="form-control" id="productDescription" name="dis" rows="2" cols="50"></textarea>
+                  <textarea class="form-control" id="productDescription" name="bdescription" rows="2" cols="50"></textarea>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" name="submitp">Submit</button>
-              <a href="/doc/apro" class="btn btn-danger">Reset</a>
+              <div class="row mb-3"> 
+               <div class="col-lg-6 col-md-6 col-12">
+                <label for="exampleInputEmail1" class="form-label">Blog Date</label>
+									<div class="form-group">
+										<input type="date" class="form-control" name="bdate">
+									</div>
+								</div>
+              </div>
+              <button  class="btn btn-success" name="submitp">Submit</button>
+              <a href="#" class="btn btn-danger">Reset</a>
             </form>
           </div>
         </div>
@@ -43,68 +51,28 @@
     </div>
 
 <!-- table begin -->
-        <div class="card w-100">
-          <div class="card-body p-4">
-            <h5 class="card-title fw-semibold mb-4">Blogs</h5>
-            <div class="table-responsive">
-              <table class="table text-nowrap mb-0 align-middle">
-                <thead class="text-dark fs-4">
-                  <tr>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">no</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Blog Title</h6>
-                    </th>
-                    <!-- <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Price</h6>
-                    </th> -->
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Description</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Image</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Edit</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Delete</h6>
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <span class="text-white"><%= a=1; %></span>
-                  <% dblo.forEach(blog => { %>
-                  <tr>
-                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0"><%= a %></h6></td>
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"><%= blog.name %></p>                         
-                    </td>
-                    <!-- <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0 fs-4">$20</h6>
-                    </td> -->
-                    <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"><%= blog.description %></p>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0 fs-4"><img src="/docterp/images/products/s11.jpg" alt="product image" width="50"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                    <a href="/doc/apro"><span><i class="ti ti-edit btn btn-outline-success"></i></span></a>
-                    </td>
-                    <td class="border-bottom-0">
-                    <a href="/doc/apro"><span><i class="ti ti-trash btn btn-outline-danger"></i></span></a>
-                    </td>
-                  </tr>  
-                  <% a++; %>
-                  <% }); %>                      
-                </tbody>  
-              </table>
-            </div>
-          </div>
-        </div>
+<section class="blog-single section p-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4 m-0">
+    <% dblo.forEach(dblog => { %>
+    <div class="col-lg-4">
+      <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= dblog.btitle %></h5>
+        <p class="card-text"><%= dblog.bdescription %></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-body-secondary"><%= dblog.bdate %></small>
+      <div class="p-5 pt-1 pb-2 px-0">
+        <button  class="btn btn-primary" name="submitp">Edite</button>
+        <a href="/doc/apro" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+      </div>
+    </div>
+    <% }); %>
+    </div>
+</section>
 <!-- table end -->
       </div>
     </div>
