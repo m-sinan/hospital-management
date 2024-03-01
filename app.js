@@ -145,9 +145,9 @@ app.post('/adoc', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('doctors');
 
-        const { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming } = req.body;
+        const { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex} = req.body;
 
-        const myobj = { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming };
+        const myobj = { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex };
         await collection.insertOne(myobj);
 
         console.log("1 document inserted");
@@ -168,9 +168,9 @@ app.post('/uapp', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('patients');
 
-        const { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate } = req.body;
+        const { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate, pemail } = req.body;
 
-        const myobj = { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate };
+        const myobj = { pname, page, psex, pplace, pdepartment, pdoctor, pbloodgroup, pphone, pdate, pemail };
         await collection.insertOne(myobj);
 
         console.log("1 document inserted");
@@ -241,6 +241,20 @@ app.get('/dapp', async (req, res) => {
 
         const dapp = await collection.find().toArray();
         res.render('./doctor/doctor-Appointments', { dapp });
+    } finally {
+        await client.close();
+    }
+});
+
+
+app.get('/acon', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('message');
+
+        const acont = await collection.find().toArray();
+        res.render('./doctor/contactus', { acont });
     } finally {
         await client.close();
     }

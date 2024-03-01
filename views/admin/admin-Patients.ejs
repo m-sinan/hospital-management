@@ -38,9 +38,9 @@
                     <th class="border-bottom-0">
                       <h5 class="fw-bolder mb-0">Problem</h5>
                     </th>
-                    <th class="border-bottom-0">
+                    <!-- <th class="border-bottom-0">
                       <h5 class="fw-bolder mb-0">Priority</h5>
-                    </th>
+                    </th> -->
                     <th class="border-bottom-0">
                       <h5 class="fw-bolder mb-0">Date</h5>
                     </th>
@@ -60,33 +60,33 @@
                       <h6 class="fw-semibold mb-0 "><%= a %></h6>
                     </td>
                     <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-1"><%= patient.name %></h6>
+                      <h6 class="fw-semibold mb-1"><%= patient.pname %></h6>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"><%= patient.age %></p>
+                      <p class="mb-0 fw-normal"><%= patient.page %></p>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"><%= patient.phone %></p>
+                      <p class="mb-0 fw-normal"><%= patient.pphone %></p>
                     </td>
                     <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-1"><%= patient.problem %></h6>
+                      <h6 class="fw-semibold mb-1"><%= patient.pproblem %></h6>
                     </td>
-                    <td class="border-bottom-0">
+                    <!-- <td class="border-bottom-0">
                       <div class="d-flex align-items-center gap-2">
                         <span class="badge bg-primary rounded-3 fw-semibold"><%= patient.priority %></span>
                       </div>
-                    </td>
+                    </td> -->
                     <td class="border-bottom-0">
-                      <p class="fw-semibold mb-0 "><%= patient.date %></p>
+                      <p class="fw-semibold mb-0 "><%= patient.pdate %></p>
                     </td>
                     <!-- <td class="border-bottom-0">
                       <p class="fw-semibold mb-0 "><%= patient.time %></p>
                     </td> -->
                     <td class="border-bottom-0">
-                      <p class="fw-semibold mb-0 "><%= patient.recommended %><br> <span class="btn btn-none text-info"
+                      <p class="btn btn-primary text-white"
                           data-bs-toggle="modal" data-bs-target="#exampleModal<%= patient._id %>">
                           more info
-                        </span> </p>
+                        </p>
                     </td>
 
                   </tr>
@@ -95,27 +95,27 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5 fw-bolder text-white bg-info p-2" id="exampleModalLabel"><%= patient.name %></h1>
+                        <h1 class="modal-title fs-5 fw-bolder text-white bg-info p-2" id="exampleModalLabel"><%= patient.pname %></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <div class="row">
                           <div class="col-12">
                             <h6 class="text-decoration-underline ">Bloodgroup</h6>
-                            <p><%= patient.bloodgroup %></p>
+                            <p><%= patient.pbloodgroup %></p>
                           </div>
                           <div class="col-12">
-                            <h6 class="text-decoration-underline ">Address</h6>
-                            <p><%= patient.address %></p>
+                            <h6 class="text-decoration-underline ">Place</h6>
+                            <p><%= patient.pplace %></p>
                           </div>
                           <div class="col-12">
                             <h6 class="text-decoration-underline "></h6>
-                            <p><%= patient.problems%></p>
+                            <p><%= patient.pproblems%></p>
                           </div>
                         <div class="row">
                           <div class="col">
                             <h6 class="text-decoration-underline ">description</h6>
-                            <p><%= patient.description %></p>
+                            <p><%= patient.pdescription %></p>
                           </div>
                         </div>
                         <h4 class="text-center">MEDICINE'S</h4>

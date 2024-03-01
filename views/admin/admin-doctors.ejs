@@ -13,7 +13,6 @@
   <%- include('admin-sidebar') %>
   <div class="container pt-5">
     <div class="card">
-      
       <div class="card-body">
         <h1 class="fw-semibold mb-4">Doctor Adding</h1>
         <div class="card">
@@ -57,28 +56,37 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Bloodgroup</label>
-                  <select class="form-select mb-3" aria-label="Default select example" id="Blood">
-                    <option value="1" class="text-dark">A+</option>
-                    <option value="2" class="text-dark">A-</option>
-                    <option value="3" class="text-dark">B+</option>
-                    <option value="1" class="text-dark">B-</option>
-                    <option value="2" class="text-dark">o+</option>
-                    <option value="3" class="text-dark">o-</option>
-                    <option value="1" class="text-dark">AB+</option>
-                    <option value="2" class="text-dark">AB-</option>
-                    <option value="3" class="text-dark">OB+</option>
-                    <option value="1" class="text-dark">OB-</option>
+                  <select class="form-select mb-3" name="dbloodgroup" aria-label="Default select example" id="Blood">
+                    <option selected class="text-dark"></option>
+                    <option value="A+" class="text-dark">A+</option>
+                    <option value="A-" class="text-dark">A-</option>
+                    <option value="B+" class="text-dark">B+</option>
+                    <option value="B-" class="text-dark">B-</option>
+                    <option value="o+" class="text-dark">o+</option>
+                    <option value="o-" class="text-dark">o-</option>
+                    <option value="AB+" class="text-dark">AB+</option>
+                    <option value="AB-" class="text-dark">AB-</option>
+                    <option value="OB+" class="text-dark">OB+</option>
+                    <option value="OB-" class="text-dark">OB-</option>
                   </select>
                 </div>
               </div>
               <div class="row mb-3">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor Phone</label>
                   <input type="text" class="form-control" name="dphone" >
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                   <label for="exampleInputEmail1" class="form-label">Doctor timing</label>
                   <input type="text" class="form-control" name="dtiming" >
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                  <label for="exampleInputEmail1" class="form-label">Sex</label>
+                  <select class="form-select mb-3" name="dsex" aria-label="Default select example" id="Blood">
+                    <option selected class="text-dark"></option>
+                    <option value="male" class="text-dark">Male</option>
+                    <option value="female" class="text-dark">Female</option>
+                  </select>
                 </div>
               </div>
               <button type="submit" class="btn btn-success" value="Submit">Add</button>
@@ -90,7 +98,7 @@
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 0;">
       <% ado.forEach(doctor => { %>
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <div class="card h-100" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
           <img src="/userp/img/Dr.JHON.jpg" class="card-img-top" alt="...">
