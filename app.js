@@ -1,9 +1,24 @@
-const express = require('express');
-const ejs = require('ejs');
-const { MongoClient } = require('mongodb');
+const express = require('express')
+const ejs = require('ejs')
+const multer  = require('multer')
+const { MongoClient } = require('mongodb')
 
 const app = express();
 const port = 10000;
+
+// Set up multer for file upload
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/doctorp/images/doctors/');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+    }
+});
+
+const upload = multer({ storage: storage });
+
 
 // new
 app.use(express.json());
@@ -45,8 +60,8 @@ app.get('/ddas', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('patients');
 
-        const dpat = await collection.find().toArray();
-        res.render('./doctor/doctor-dashboard', { dpat });
+        const ddas = await collection.find().toArray();
+        res.render('./doctor/doctor-dashboard', { ddas });
     } finally {
         await client.close();
     }
@@ -138,8 +153,8 @@ app.get('/adoc', async (req, res) => {
 });
 
 // new
-
-app.post('/adoc', async (req, res) => {
+// Updated route for adding doctors with image upload
+app.post('/adoc', upload.single('dimg'), async (req, res) => {
     try {
         await client.connect();
         const db = client.db('hospital');
@@ -147,9 +162,12 @@ app.post('/adoc', async (req, res) => {
 
         const { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex} = req.body;
 
-        const myobj = { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex };
-        await collection.insertOne(myobj);
+                // Save the filename in the database
+                const dimg = req.file.filename;
 
+        const myobj = { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg };
+        await collection.insertOne(myobj);
+        
         console.log("1 document inserted");
         res.redirect('/adoc'); // Redirect after successful insertion
     } catch (err) {
@@ -160,7 +178,18 @@ app.post('/adoc', async (req, res) => {
 });
 
 // -new
-  
+app.get('/uapp', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('hospital');
+        const collection = db.collection('doctors');
+
+        const udo = await collection.find().toArray();
+        res.render('./user/appointment', { udo });
+    } finally {
+        await client.close();
+    }
+});
 // new
 app.post('/uapp', async (req, res) => {
     try {
@@ -246,19 +275,29 @@ app.get('/dapp', async (req, res) => {
     }
 });
 
-
-app.get('/acon', async (req, res) => {
+// new
+app.post('/dapp', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('hospital');
-        const collection = db.collection('message');
+        const collection = db.collection('patients');
 
-        const acont = await collection.find().toArray();
-        res.render('./doctor/contactus', { acont });
+        const { pproblem, pdescription } = req.body;
+
+        const myobj = { pproblem, pdescription };
+        await collection.updateOne(myobj);
+
+        console.log("1 document inserted");
+        res.redirect('/dapp'); // Redirect after successful insertion
+    } catch (err) {
+        console.error("Error:", err);
     } finally {
         await client.close();
     }
 });
+
+// -new 
+
 
 // route
 

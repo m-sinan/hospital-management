@@ -7,9 +7,9 @@ const router = express.Router();
 router.get('/uabo', (req, res) => {
     res.render('user/about');
 })
-router.get('/uapp', (req, res) => {
-    res.render('user/appointment');
-})
+// router.get('/uapp', (req, res) => {
+//     res.render('user/appointment');
+// })
 // router.get('/ublo', (req, res) => {
 //     res.render('user/blog');
 // })

@@ -123,14 +123,18 @@
 							<label class="form-label">Department</label>
 							<select name="pdepartment" class="form-select">
 							  <option selected></option>
-							  <option value="Neurology">Neurology</option>
+							  <% udo.forEach(Doctors => { %>
+							  <option value="Neurology"><%= Doctors.ddepartment %></option>
+							  <% }); %>
 							</select>
 						</div>
 						  <div class="col-lg-6 col-md-6">
 							<label  class="form-label">Doctors</label>
 							<select name="pdoctor" class="form-select">
 							  <option selected></option>
-							  <option value="Dr.jhon">Dr.jhon</option>
+							  <% udo.forEach(Doctors => { %>
+							  <option value="Dr.jhon"><%= Doctors.dname %></option>
+							  <% }); %>
 							</select>
 						</div>
 						<div class="col-lg-6 col-md-6">

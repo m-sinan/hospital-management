@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MES Admin-Dashboard</title>
-  <link rel="shortcut icon" type="image/png" href="/docterp/images/logos/favicon.png" />
-  <link rel="stylesheet" href="/docterp/css/styles.min.css" />
+  <link rel="shortcut icon" type="image/png" href="/doctorp/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/doctorp/css/styles.min.css" />
 </head>
 
 <body>
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-lg align-items-strech">
           <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <div class="btn shadow shadow-lg border-0 p-2  mb-2 rounded-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-4 d-flex align-items-stretch">
+          <div class="col-lg-4 col-md-4 d-flex align-items-stretch">
             <div class="card w-100">
               <div class="card-body p-4">
                 <div class="mb-4">
@@ -163,14 +163,14 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-8 d-flex align-items-stretch">
+          <div class="col-lg-8 col-md-8 d-flex align-items-stretch">
             <div class="card w-100">
               <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Recent op</h5>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
-                      <tr>
+                      <tr class="bg-light">
                         <!-- <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Id</h6>
                         </th> -->
@@ -181,19 +181,19 @@
                           <h6 class="fw-semibold mb-0">Problem</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Priority</h6>
+                          <h6 class="fw-semibold mb-0">Sex</h6>
                         </th>
                         <th class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0">Recommended</h6>
+                          <h6 class="fw-semibold mb-0">Date</h6>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
 
-                      <% dpat.forEach(patient=> { %>
+                      <% ddas.forEach(patient=> { %>
 
-                        <!-- <tr>
-                        <td class="border-bottom-0">
+                        <tr>
+                        <!-- <td class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">101</h6>
                         </td> -->
                         <td class="border-bottom-0">
@@ -207,16 +207,14 @@
                           </p>
                         </td>
                         <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-primary  rounded-3 fw-semibold" style="background-color: #1A76D1;">
-                              <%= patient.ppriority %>
-                            </span>
-                          </div>
+                          <p class="mb-0 fw-normal">
+                            <%= patient.psex %>
+                          </p>
                         </td>
                         <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">
-                            <%= patient.precommended %>
-                          </h6>
+                          <p class="fw-semibold mb-0 ">
+                            <%= patient.pdate %>
+                          </p>
                         </td>
                         </tr>
                         <% }); %>
@@ -234,13 +232,13 @@
       </div>
     </div>
     </div>
-    <script src="/docterp/libs/jquery/dist/jquery.min.js"></script>
-    <script src="/docterp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/docterp/js/sidebarmenu.js"></script>
-    <!-- <script src="/docterp/js/app.min.js"></script>
-  <script src="/docterp/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="/docterp/libs/simplebar/dist/simplebar.js"></script>
-  <script src="/docterp/js/dashboard.js"></script> -->
+    <script src="/doctorp/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/doctorp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/doctorp/js/sidebarmenu.js"></script>
+    <!-- <script src="/doctorp/js/app.min.js"></script>
+  <script src="/doctorp/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/doctorp/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/doctorp/js/dashboard.js"></script> -->
 </body>
 
 </html>
