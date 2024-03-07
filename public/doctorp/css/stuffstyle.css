@@ -1,0 +1,7 @@
+.doctor-card{
+    transform: scale(1);
+    transition: 0.5s;
+}
+.doctor-card:hover{
+    transform: scale(1.1);
+}

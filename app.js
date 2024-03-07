@@ -4,12 +4,12 @@ const multer  = require('multer')
 const { MongoClient } = require('mongodb')
 
 const app = express();
-const port = 10000;
+const port = 5000;
 
 // Set up multer for file upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/doctorp/images/doctors/');
+        cb(null, 'public/adminp/image/doctors/');
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
