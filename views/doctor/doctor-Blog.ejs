@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,80 +11,88 @@
 
 <body>
   <%- include('Sidebar') %>
-  <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
-        <h1 class="fw-semibold mb-4">Blog</h1>
-        <div class="card">
-          <div class="card-body">
-          <form method="POST" action="/dblo">  
-              <div class="row mb-3">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                  <label for="exampleInputEmail1" class="form-label">Blog Title</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="btitle" value="">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="fw-semibold mb-4">Blog</h1>
+          <div class="card">
+            <div class="card-body">
+              <form method="POST" action="/dblo" enctype="multipart/form-data">
+                <div class="row mb-3">
+                  <div class="col-lg-8 col-md-8 col-sm-12">
+                    <label for="exampleInputEmail1" class="form-label">Blog Title</label>
+                    <input type="text" class="form-control" name="btitle" value="">
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <label for="exampleInputEmail1" class="form-label">Blog Image</label>
+                    <input type="file" class="form-control" name="bimage">
+                  </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                  <label for="exampleInputEmail1" class="form-label">Blog Image</label>
-                  <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="bimage">
-                  <img src="/doctorp/images/products/" alt="" width="100">
+                <div class="row mb-3">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <label for="exampleInputEmail1" class="form-label">Blog Description</label>
+                    <textarea class="form-control" id="productDescription" name="bdescription" rows="2"
+                      cols="50"></textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                  <label for="exampleInputEmail1" class="form-label">Blog Description</label>
-                  <textarea class="form-control" id="productDescription" name="bdescription" rows="2" cols="50"></textarea>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <label for="exampleInputEmail1" class="form-label">Blog Date</label>
+                    <div class="form-group">
+                      <input type="date" class="form-control" name="bdate">
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="row mb-3"> 
-               <div class="col-lg-6 col-md-6 col-12">
-                <label for="exampleInputEmail1" class="form-label">Blog Date</label>
-									<div class="form-group">
-										<input type="date" class="form-control" name="bdate">
-									</div>
-								</div>
-              </div>
-              <button  class="btn btn-success" name="submitp">Submit</button>
-              <a href="#" class="btn btn-danger">Reset</a>
-            </form>
+                <button class="btn btn-success" name="submitp">Submit</button>
+                <a href="#" class="btn btn-danger">Reset</a>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- table begin -->
+      <section class="blog-single section p-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4 m-0">
+          <% dblo.forEach(blog=> { %>
+            <div class="col-lg-4">
+              <div class="card h-100">
+                <img src="/doctorp/images/blog/<%= blog.bimage %>" alt="blog Image" class="rounded">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= blog.btitle %>
+                  </h5>
+                  <p class="card-text">
+                    <%= blog.bdescription %>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-body-secondary">
+                    <%= blog.bdate %>
+                  </small>
+                  <hr>
+                  <div class="p-5 pt-1 pb-2 px-0">
+                    <button class="btn btn-primary" name="submitp">Edite</button>
+                    <a href="/doc/apro" class="btn btn-danger">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+      </section>
+      <!-- table end -->
+    </div>
+    </div>
     </div>
 
-<!-- table begin -->
-<section class="blog-single section p-5">
-  <div class="row row-cols-1 row-cols-md-3 g-4 m-0">
-    <% dblo.forEach(dblog => { %>
-    <div class="col-lg-4">
-      <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= dblog.btitle %></h5>
-        <p class="card-text"><%= dblog.bdescription %></p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary"><%= dblog.bdate %></small>
-      <div class="p-5 pt-1 pb-2 px-0">
-        <button  class="btn btn-primary" name="submitp">Edite</button>
-        <a href="/doc/apro" class="btn btn-danger">Delete</a>
-      </div>
-    </div>
-      </div>
-    </div>
-    <% }); %>
-    </div>
-</section>
-<!-- table end -->
-      </div>
-    </div>
-  </div>
-
-  <script src="/doctorp/libs/jquery/dist/jquery.min.js"></script>
-  <script src="/doctorp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/doctorp/js/sidebarmenu.js"></script>
-  <script src="/doctorp/js/app.min.js"></script>
-  <script src="/doctorp/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="/doctorp/libs/simplebar/dist/simplebar.js"></script>
-  <script src="/doctorp/js/dashboard.js"></script>
+    <script src="/doctorp/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/doctorp/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/doctorp/js/sidebarmenu.js"></script>
+    <script src="/doctorp/js/app.min.js"></script>
+    <script src="/doctorp/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="/doctorp/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/doctorp/js/dashboard.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,7 @@
+.profile-card{
+    transform: scale(1);
+    transition: .5s;
+}
+.profile-card:hover{
+    transform: scale(1.1);
+}

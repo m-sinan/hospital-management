@@ -7,7 +7,7 @@
   <title>Doctors</title>
   <link rel="stylesheet" href="/doctorp/css/styles.css" />
   <link rel="stylesheet" href="/adminp/css/style.css">
-  <link rel="stylesheet" href="/doctorp/css/stuffstyle.css">
+  <link rel="stylesheet" href="/adminp/css/card.css">
 </head>
 
 <body>
@@ -99,23 +99,29 @@
       </div>
       <div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 0;">
         <% ado.forEach(doctors=> { %>
-          <div class="col-lg-4 col-md-6 col item">
-            <div class="card doctor-card h-100" data-bs-toggle="modal"
+          <div class="col-lg-4 col-md-6 col item pb-5">
+            <div class="card profile-card h-100">
+              <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded"  width="100" data-bs-toggle="modal"
               data-bs-target="#staticBackdrop<%= doctors._id %>">
-              <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded"  width="100">
-              <div class="card-body pb-0">
+              <div class="card-body pt-2 pb-0" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop<%= doctors._id %>">
                 <h3 class="fw-bolder text-center"><span class="fs-4">Dr.</span>
                   <%= doctors.dname %>
                 </h3>
                 <hr>
-                <h6 class="card-title fw-bolder text-center fs-4">
-                  <%= doctors.ddepartment %> department
+                <h6 class="card-title fw-bolder text-center fs-4 pb-0">
+                  <%= doctors.ddepartment %> DEPARTMENT
                 </h6>
-                <!-- <p class="fs-1 text-center"> (<%= doctors._id %>)</p>  -->
-                <hr>
-                <button type="submit" class="btn btn-primary" value="Submit">Edit</button>
-                <a href="" class="btn btn-danger">delete</a>
+                <!-- <p class="fs-1 text-center"> (<%= doctors._id %>)</p>  -->  
               </div>
+              <hr>
+                <div class="d-flex justify-content-between p-3">
+                  <button type="submit" class="btn btn-primary" value="Submit">Edit</button>
+                  <form action="/deletedoc" method="POST">
+                    <input type="hidden" value="<%= doctors._id %>" name="doctorId">
+                    <a type="submit" class="btn btn-danger">delete</a>
+                  </form>
+                </div>
             </div>
           </div>
 
