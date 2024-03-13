@@ -1,5 +1,6 @@
 const express = require('express')
 const ejs = require('ejs')
+const fs = require('fs')
 const multer = require('multer')
 const { MongoClient, ObjectId } = require('mongodb')
 
@@ -221,11 +222,16 @@ app.post('/deletedoc', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('doctors');
 
+        const doctor = await collection.findOne({ _id: new ObjectId(doctorId) });
+
+
         // Delete the doctor record with the specified doctorId
         const result = await collection.deleteOne({ _id: new ObjectId(doctorId) });
 
         if (result.deletedCount === 1) {
             console.log(`Doctor with ID ${doctorId} deleted successfully.`);
+            fs.unlinkSync('public/adminp/image/doctors/' + doctor.dimg);
+            console.log('image deleted successfullly')
         } else {
             console.log(`Doctor with ID ${doctorId} not found.`);
         }
@@ -277,7 +283,7 @@ app.post('/uapp', async (req, res) => {
 
 // -new 
 
-// Define the route to handle the deletion of a doctor record
+// Define the route to handle the deletion of a staff record
 app.post('/deletesta', async (req, res) => {
     try {
         // Get the staffId from the form data
