@@ -5,8 +5,6 @@ const { MongoClient, ObjectId } = require('mongodb')
 
 const app = express();
 const port = 5000;  
-    //   cb(null, 'public/adminp/image/staff/');
-    //     cc(null, 'public/doctorp/images/blog/');
 
 // Set up multer for file upload
 const storagea = multer.diskStorage({
@@ -219,6 +217,7 @@ app.post('/deletedoc', async (req, res) => {
 
         // Connect to the MongoDB database
         const client = await MongoClient.connect('mongodb://localhost:27017/');
+        
         const db = client.db('hospital');
         const collection = db.collection('doctors');
 
@@ -277,6 +276,34 @@ app.post('/uapp', async (req, res) => {
 });
 
 // -new 
+
+// Define the route to handle the deletion of a doctor record
+app.post('/deletesta', async (req, res) => {
+    try {
+        // Get the staffId from the form data
+        const staffId = req.body.staffId;
+
+        // Connect to the MongoDB database
+        const client = await MongoClient.connect('mongodb://localhost:27017/');
+        const db = client.db('hospital');
+        const collection = db.collection('staffs');
+
+        // Delete the doctor record with the specified staffId
+        const result = await collection.deleteOne({ _id: new ObjectId(staffId) });
+
+        if (result.deletedCount === 1) {
+            console.log(`staff with ID ${staffId} deleted successfully.`);
+        } else {
+            console.log(`staff with ID ${staffId} not found.`);
+        }
+
+        // Redirect after successful deletion
+        return res.redirect('/asta');
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return "An error occurred while deleting the doctor record.";
+    }
+});
 
 
 // Updated route for adding doctors with image upload
