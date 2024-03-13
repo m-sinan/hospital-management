@@ -286,7 +286,7 @@ app.post('/uapp', async (req, res) => {
 // Define the route to handle the deletion of a staff record
 app.post('/deletesta', async (req, res) => {
     try {
-        // Get the staffId from the form data
+        // Get the staff from the form data
         const staffId = req.body.staffId;
 
         // Connect to the MongoDB database
@@ -294,11 +294,15 @@ app.post('/deletesta', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('staffs');
 
-        // Delete the doctor record with the specified staffId
+        const staff = await collection.findOne({ _id: new ObjectId(staffId) });
+
+        // Delete the staff record with the specified staff
         const result = await collection.deleteOne({ _id: new ObjectId(staffId) });
 
         if (result.deletedCount === 1) {
             console.log(`staff with ID ${staffId} deleted successfully.`);
+            fs.unlinkSync('public/adminp/image/staff/'+staff.simg);
+            console.log('image deleted successfullly')
         } else {
             console.log(`staff with ID ${staffId} not found.`);
         }
@@ -307,7 +311,7 @@ app.post('/deletesta', async (req, res) => {
         return res.redirect('/asta');
     } catch (e) {
         console.error(`Error: ${e}`);
-        return "An error occurred while deleting the doctor record.";
+        return "An error occurred while deleting the staff record.";
     }
 });
 
