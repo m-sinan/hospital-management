@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin-customer</title>
-  <link rel="shortcut icon" type="image/png" href="/doctorp/images/logos/favicon.png" />
+  <link rel="shortcut icon"  href="/userp/img/favicon.png" />
   <link rel="stylesheet" href="/doctorp/css/styles.min.css" />
 </head>
 
@@ -52,13 +52,13 @@
       </div>
 
       <!-- table begin -->
-      <section class="blog-single section p-5">
+      <section class="blog-single section">
         <div class="row row-cols-1 row-cols-md-3 g-4 m-0">
           <% dblo.forEach(blog=> { %>
             <div class="col-lg-4">
               <div class="card h-100">
-                <img src="/doctorp/images/blog/<%= blog.bimage %>" alt="blog Image" class="rounded">
-                <div class="card-body">
+                <img src="/doctorp/images/blog/<%= blog.bimage %>" alt="blog Image" class="rounded" style="height: 300px; object-fit: cover;">
+                <div class="card-body p-3">
                   <h5 class="card-title">
                     <%= blog.btitle %>
                   </h5>
@@ -71,9 +71,12 @@
                     <%= blog.bdate %>
                   </small>
                   <hr>
-                  <div class="p-5 pt-1 pb-2 px-0">
+                  <div class="d-flex justify-content-around">
                     <button class="btn btn-primary" name="submitp">Edite</button>
-                    <a href="/doc/apro" class="btn btn-danger">Delete</a>
+                    <form action="/deleteblo" method="POST">
+                      <input type="hidden" value="<%= blog._id %>" name="blogId">
+                      <button type="submit" class="btn btn-danger">delete</button>
+                    </form>
                   </div>
                 </div>
               </div>

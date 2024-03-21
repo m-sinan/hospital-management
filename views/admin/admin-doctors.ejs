@@ -101,10 +101,11 @@
         <% ado.forEach(doctors=> { %>
           <div class="col-lg-4 col-md-6 col item pb-5">
             <div class="card profile-card h-100">
-              <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded"  width="100" data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop<%= doctors._id %>" style="height: 300px; object-fit: cover;">
+              <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded"  width="100"
+                data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= doctors._id %>"
+                style="height: 300px; object-fit: cover;">
               <div class="card-body pt-2 pb-0" data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop<%= doctors._id %>">
+                data-bs-target="#staticBackdrop<%= doctors._id %>">
                 <h3 class="fw-bolder text-center"><span class="fs-4">Dr.</span>
                   <%= doctors.dname %>
                 </h3>
@@ -112,20 +113,114 @@
                 <h6 class="card-title fw-bolder text-center fs-4 pb-0">
                   <%= doctors.ddepartment %> DEPARTMENT
                 </h6>
-                <!-- <p class="fs-1 text-center"> (<%= doctors._id %>)</p>  -->  
+                <!-- <p class="fs-1 text-center"> (<%= doctors._id %>)</p>  -->
               </div>
               <hr>
-                <div class="d-flex justify-content-between p-3">
-                  <button type="submit" class="btn btn-primary" value="Submit">Edit</button>
-                  <form action="/deletedoc" method="POST">
-                    <input type="hidden" value="<%= doctors._id %>" name="doctorId">
-                    <button type="submit" class="btn btn-danger">delete</button>
-                  </form>
-                </div>
+              <div class="d-flex justify-content-between p-3">
+                <button type="submit" class="btn btn-primary" value="Submit" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal<%= doctors._id %>">Edit</button>
+                <form action="/deletedoc" method="POST">
+                  <input type="hidden" value="<%= doctors._id %>" name="doctorId">
+                  <button type="submit" class="btn btn-danger">delete</button>
+                </form>
+              </div>
             </div>
           </div>
 
-          
+          <!-- molel -->
+          <div class="modal fade" id="exampleModal<%= doctors._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen p-5 pt-2">
+              <div class="modal-content px-5 py-3">
+                <div class="modal-header bg-light">
+                  <h1 class="modal-title fs-5 fw-bolder bg-info text-white px-5 p-2" id="exampleModalLabel">
+                    <%= doctors.dname %>
+                  </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="/updatedoc" method="POST" enctype="multipart/form-data">
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor Name</label>
+                        <input type="text" value="<%= doctors.dname%>" class="form-control" name="dname" id="dname">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor photo</label>
+                        <input type="file" class="form-control" name="dimg">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor username</label>
+                        <input type="text" value="<%= doctors.dusername%>" class="form-control" name="dusername" id="username">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor password</label>
+                        <input type="text" value="<%= doctors.dpassword %>" class="form-control" name="dpassword" id="password">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor Department </label>
+                        <input type="text" value="<%= doctors.ddepartment %>" class="form-control" name="ddepartment">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor Address</label>
+                        <input class="form-control" value="<%= doctors.daddress %>" id="productDescription" name="daddress" rows="2"
+                          cols="50"></input>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor Email</label>
+                        <input type="text" value="<%= doctors.demail %>"  class="form-control" name="demail">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">Doctor Bloodgroup</label>
+                        <select class="form-select mb-3" name="dbloodgroup" aria-label="Default select example" id="Blood">
+                          <option selected   class="text-dark"><%= doctors.dbloodgroup %></option>
+                          <option value="A+" class="text-dark">A+</option>
+                          <option value="A-" class="text-dark">A-</option>
+                          <option value="B+" class="text-dark">B+</option>
+                          <option value="B-" class="text-dark">B-</option>
+                          <option value="o+" class="text-dark">o+</option>
+                          <option value="o-" class="text-dark">o-</option>
+                          <option value="AB+" class="text-dark">AB+</option>
+                          <option value="AB-" class="text-dark">AB-</option>
+                          <option value="OB+" class="text-dark">OB+</option>
+                          <option value="OB-" class="text-dark">OB-</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">Doctor Phone</label>
+                        <input type="text" value="<%= doctors.dphone %>" class="form-control" name="dphone">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">Doctor timing</label>
+                        <input type="text" value="<%= doctors.dtiming %>" class="form-control" name="dtiming">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">Sex</label>
+                        <select class="form-select mb-3" name="dsex" aria-label="Default select example" id="Blood">
+                          <option selected class="text-dark"><%= doctors.dsex %></option>
+                          <option value="male" class="text-dark">Male</option>
+                          <option value="female" class="text-dark">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <input type="hidden" value="<%= doctors._id %>" name="doctorId">
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
           <!-- molel -->
           <div class="modal fade text-center" id="staticBackdrop<%= doctors._id %>" data-bs-backdrop="static"
@@ -133,13 +228,14 @@
             <button type="button" class="bg-success btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-dialog pt-2">
               <div class="modal-content">
-                <div class="card p-4" data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop<%= doctors._id %>">
+                <div class="card p-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= doctors._id %>">
                   <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded img-fluid"
                      width="100" style="height: 300px; object-fit: cover;">
                   <div class="modal-body pb-0">
                     <h2 class="fw-bolder text-center"><span class="fs-4">Dr.</span>
-                      <span class="text-end"><%= doctors.dname %></span>
+                      <span class="text-end">
+                        <%= doctors.dname %>
+                      </span>
                     </h2>
                     <hr>
                     <div class="row text-center">
@@ -147,63 +243,82 @@
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Username:</span>
-                              <span class=""><%= doctors.dusername %></span>
+                            <span class="">
+                              <%= doctors.dusername %>
+                            </span>
                           </div>
                           <hr>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">password:</span>
-                            <span class="text-end"><%= doctors.dpassword %></span>
+                            <span class="text-end">
+                              <%= doctors.dpassword %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Ddepartment:</span>
-                            <span class="text-end"><%= doctors.ddepartment %></span>
+                            <span class="text-end">
+                              <%= doctors.ddepartment %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Address:</span>
-                              <span class="text-end"><%= doctors.daddress %></span>
+                            <span class="text-end">
+                              <%= doctors.daddress %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Email:</span>
-                            <span class="text-end"><%= doctors.demail %></span>
+                            <span class="text-end">
+                              <%= doctors.demail %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Bloodgroup:</span>
-                            <span class="text-end"><%= doctors.dbloodgroup %></span>
+                            <span class="text-end">
+                              <%= doctors.dbloodgroup %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Phone:</span>
-                            <span class="text-end"><%= doctors.dphone %></span>
+                            <span class="text-end">
+                              <%= doctors.dphone %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Timing:</span>
-                            <span class="text-end"><%= doctors.dtiming %></span>
+                            <span class="text-end">
+                              <%= doctors.dtiming %>
+                            </span>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between">
                             <span class="fs-5">Sex:</span>
-                            <span class="text-end"><%= doctors.dsex %></span>
+                            <span class="text-end">
+                              <%= doctors.dsex %>
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
                     <hr>
                     <div class="row-cols-1 pb-3">
-                      <button type="button" class="btn btn-lg btn-secondary"  data-bs-dismiss="modal" aria-label="Close">Close</button>
+                      <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal"
+                        aria-label="Close">Close</button>
                     </div>
                   </div>
                 </div>

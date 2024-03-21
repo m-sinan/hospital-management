@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Today Appointments</title>
-  <link rel="shortcut icon" type="/doctorp/image/png" href="/doctorp/images/logos/favicon.png" />
+  <title>Today patientss</title>
+  <link rel="shortcut icon" href="/userp/img/favicon.png" />
   <link rel="stylesheet" href="/doctorp/css/styles.css" />
 </head>
 
@@ -14,7 +14,7 @@
     <div class="container-fluid">
       <div class="card">
         <div class="card-body">
-          <h1 class="fw-semibold mb-4">Appointments</h1>
+          <h2 class="fw-bolder mb-4">APPOINTMENTS</h2>
           <!-- table begin -->
           <div class="card w-100">
             <div class="card-body p-3">
@@ -31,145 +31,132 @@
                   </thead>
                   <tbody>
                     <span class="text-white">
-                      <%= a=1; %>
+                      <%= b=1; %>
                     </span>
-                    <% dapp.forEach(Appointment=> { %>
+                    <% dapp.forEach(patients=> { %>
                       <tr>
                         <th>
-                          <%= a %>
+                          <%= b %>
                         </th>
                         <td>
-                          <%= Appointment.pname %>
+                          <%= patients.pname %>
                         </td>
                         <td>
-                          <%= Appointment.page %>
+                          <%= patients.page %>
                         </td>
                         <td>
-                          <%= Appointment.psex %>
+                          <%= patients.psex %>
                         </td>
                         <td>
-                          <%= Appointment.pdate %>
+                          <%= patients.pdate %>
                         </td>
                         <td class="border-bottom-0">
                           <p class=" mb-0 ">
-                            <%= Appointment.recommended %><br> <span class="btn btn-primary btn-sm text-white" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal<%= Appointment._id %>"><i class="ti ti-check"></i>
-                              </span>
+                            <%= patients.recommended %>
+                              <% if (patients.pproblem) { %>
+                                <br><span id="tickbtn" class="btn btn-success btn-sm text-white" data-bs-toggle="modal"
+                                  data-bs-target="#exampleModal<%= patients._id %>"><i class="ti ti-check"></i></span>
+                                <% } else { %>
+                                  <br><span id="tickbtn" class="btn btn-primary btn-sm text-white"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal<%= patients._id %>"><i
+                                      class="ti ti-check"></i></span>
+
+                                  <% } %>
                           </p>
                         </td>
                       </tr>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal<%= Appointment._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog modal-fullscreen p-4">
-                            <div class="modal-content px-5 py-3">
-                              <div class="modal-header bg-light">
-                                <h1 class="modal-title fs-5 fw-bolder bg-info text-white px-5 p-2" id="exampleModalLabel">
-                                  <%= Appointment.pname %></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form accept="/dapp" method="post">
-                                  <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Problems </label>
-                                    <input type="text" name="pproblem" class="form-control" id="recipient-name">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Description/Recommended</label>
-                                    <textarea class="form-control" name="pdescription" id="message-text"></textarea>
-                                  </div>
-                                  <h4 class="text-center p-4 pb-2 fw-bolder">Medicine</h4>
-                                  <div class="row">
-                                    <div class="col-10">
-                                      <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Morning </label>
-                                        <input type="text" class="form-control" id="recipient-name">
-                                      </div>
-                                    </div>
-                                    <div class="col-2 p-5">
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          After the food
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-10">
-                                      <div class="mb-3">
-                                        <div class="mb-3">
-                                          <label for="recipient-name" class="col-form-label">Afternoon</label>
-                                          <input type="text" class="form-control" id="recipient-name">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="col-2 p-5">
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          After the food
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-10">
-                                      <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Night</label>
-                                        <input type="text" class="form-control" id="recipient-name">
-                                      </div>
-                                    </div>
-                                    <div class="col-2 p-5">
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          After the food
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                          id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                          High
-                                        </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                          id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                          Low
-                                        </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                          id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                          Medium
-                                        </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios"
-                                          id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                          Critical
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
-                              </div>
-                            </form>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal<%= patients._id %>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen p-4">
+                          <div class="modal-content px-5 py-3">
+                            <div class="modal-header bg-light">
+                              <h1 class="modal-title fs-5 fw-bolder bg-info text-white px-5 p-2" id="exampleModalLabel">
+                                <%= patients.pname %>
+                              </h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                             </div>
+                            <div class="modal-body">
+                              <form action="/updateapp" method="POST">
+                                <div class="mb-3">
+                                  <label for="recipient-name" class="col-form-label">Problems </label>
+                                  <input type="text" name="pproblem" class="form-control" id="recipient-name"
+                                    value="<%= patients.pproblem %>">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="message-text" class="col-form-label">Description/Recommended</label>
+                                  <input class="form-control" value="<%= patients.pdescription %>" name="pdescription"
+                                    aria="<%= patients.pdescription %>" id="message-text"></input>
+                                </div>
+                                <h4 class="text-center p-4 pb-2 fw-bolder">Medicine</h4>
+                                <div class="row">
+                                  <div class="col-10">
+                                    <div class="mb-3">
+                                      <label for="recipient-name" class="col-form-label">Morning</label>
+                                      <input type="text" name="pmorning" value="<%= patients.pmorning %>"
+                                        class="form-control" id="recipient-name">
+                                    </div>
+                                  </div>
+                                  <div class="col-2 p-5">
+                                    <div class="form-check">
+                                      <input class="form-check-input" name="mafterfood" type="checkbox"
+                                        value="afterfood" id="flexCheckDefault">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                        After the food
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-10">
+                                    <div class="mb-3">
+                                      <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Afternoon</label>
+                                        <input type="text" name="pafternoon" class="form-control"
+                                          value="<%= patients.pafternoon %>" id="recipient-name">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-2 p-5">
+                                    <div class="form-check">
+                                      <input class="form-check-input" name="aafterfood" type="checkbox"
+                                        value="afterfood" id="flexCheckDefault">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                        After the food
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-10">
+                                    <div class="mb-3">
+                                      <label for="recipient-name" class="col-form-label">Night</label>
+                                      <input type="text" name="pnight" value="<%= patients.pnight %>"
+                                        class="form-control" id="recipient-name">
+                                    </div>
+                                  </div>
+                                  <div class="col-2 p-5">
+                                    <div class="form-check">
+                                      <input class="form-check-input" name="nafterfood" type="checkbox"
+                                        value="afterfood" id="flexCheckDefault">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                        After the food
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <input type="hidden" value="<%= patients._id %>" name="patientId">
+                              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                            </div>
+                            </form>
                           </div>
                         </div>
-                        <% a++; %>
+                      </div>
+                      <% b++; %>
                         <% }); %>
                   </tbody>
                 </table>
@@ -184,7 +171,6 @@
         </div>
       </div>
     </div>
-
     <script src="/doctorp/libs/jquery/dist/jquery.min.js"></script>
     <script src="/public/adminp/java/java.js"></script>
     <!-- page -->

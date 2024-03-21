@@ -88,57 +88,31 @@
     </div>
     <!-- End Breadcrumbs -->
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 p-5" style="margin: 0;">
-      <% udo.forEach(doctor => { %>
-      <div class="col">
-        <div class="card h-100">
-          <img src="/userp/img/Dr.JHON.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title fw-bolder">Dr.<%= doctor.dname %></h5>
-            <h6 class="card-title"><%= doctor.ddepartment %> Department</h6>
-            <p class="p-2 btn"><%= doctor.dtiming %></p>
-            <p class="p-2 btn d-none" style="background-color:brown;">Today off</p>
-          </div>
-        </div>
-      </div>
-      <% }); %>
-    </div>
-    <!-- <div class="container shadow-lg p-5 mb-2">
-            <h1 class="text-center fw-bolder">Token info</h1>
-            <hr>
-            <div class="row row-cols-1 row-cols-md-3 g-4 pb-5" style="margin: 0;">
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">General physicianist</h6>
+    <div class="row pt-5 pb-5 g-4 " style="margin: 0;">
+      <% udo.forEach(doctors => { %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card profile-card h-100">
+                <img src="/adminp/image/doctors/<%= doctors.dimg %>" alt="Doctor Image" class="rounded"  width="100" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop<%= doctors._id %>" style="height: 400px; object-fit: cover;">
+                <div class="card-body pb-0" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop<%= doctors._id %>">
+                  <h4 class="fw-bolder text-center"><span class="fs-4">Dr.</span>
+                    <%= doctors.dname %>
+                  </h4>
+                  <hr>
+                  <h6 class="card-title fw-bolder text-center  pb-0">
+                    <%= doctors.ddepartment %> DEPARTMENT
+                  </h6>
+                </div>
                 <hr>
-              </div>
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">Cardiologist</h6>
-                <hr>
-                
-              </div>
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">Physiologist</h6>
-                <hr>
-                
-              </div>
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">Neurologist</h6>
-                <hr>
-                
-              </div>
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">Orthologist</h6>
-                <hr>
-                
-              </div>
-              <div class="col-lg-2  shadow shadow-lg">
-                <h6 class="card-title text-center">Physiotherapy</h6>
-                <hr>
-                
+                  <div class="p-3">
+                    <p>Timing : <span class="fw-bolder"><%= doctors.dtiming %></span></p>
+                  </div>
               </div>
             </div>
-          </div> -->
-
+     
+      <% }); %>
+    </div>
 
     <%- include('footer.ejs') %>
 

@@ -5,7 +5,7 @@ const multer = require('multer')
 const { MongoClient, ObjectId } = require('mongodb')
 
 const app = express();
-const port = 5000;  
+const port = 8000;  
 
 // Set up multer for file upload
 const storagea = multer.diskStorage({
@@ -157,7 +157,7 @@ app.post('/', async (req, res) => {
 
 // new
 
-app.get('/apas', async (req, res) => {
+app.get('/apat', async (req, res) => {
     try {
         await client.connect();
         const db = client.db('hospital');
@@ -208,7 +208,6 @@ app.post('/adoc', uploada.single('dimg'), async (req, res) => {
     }
 });
 
-// const { MongoClient, ObjectId } = require('mongodb');
 
 // Define the route to handle the deletion of a doctor record
 app.post('/deletedoc', async (req, res) => {
@@ -392,6 +391,40 @@ app.post('/dblo', uploadc.single('bimage'), async (req, res) => {
     }
 });
 
+// Define the route to handle the deletion of a doctor record
+app.post('/deleteblo', async (req, res) => {
+    try {
+        // Get the doctorId from the form data
+        const blogId = req.body.blogId;
+
+        // Connect to the MongoDB database
+        const client = await MongoClient.connect('mongodb://localhost:27017/');
+        
+        const db = client.db('hospital');
+        const collection = db.collection('blog');
+
+        const blog = await collection.findOne({ _id: new ObjectId(blogId) });
+
+
+        // Delete the blog record with the specified blogid
+        const result = await collection.deleteOne({ _id: new ObjectId(blogId) });
+
+        if (result.deletedCount === 1) {
+            console.log(`blog with ID ${blogId} deleted successfully.`);
+            fs.unlinkSync('public/doctorp/images/blog/' + blog.bimage);
+            console.log('image deleted successfullly')
+        } else {
+            console.log(`Doctor with ID ${blogId} not found.`);
+        }
+
+        // Redirect after successful deletion
+        return res.redirect('/dblo');
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return "An error occurred while deleting the doctor record.";
+    }
+});
+
 // -new
 
 app.get('/dapp', async (req, res) => {
@@ -400,36 +433,130 @@ app.get('/dapp', async (req, res) => {
         const db = client.db('hospital');
         const collection = db.collection('patients');
 
-        const dapp = await collection.find().toArray();
-        res.render('./doctor/doctor-Appointments', { dapp });
+        const {pproblem} = req.body;
+        const dapp = await collection.find().sort({ _id: -1 }).toArray();
+        res.render('./doctor/doctor-Appointments', { dapp, pproblem});
     } finally {
         await client.close();
     }
 });
 
 // new
-app.post('/dapp', async (req, res) => {
+
+app.post('/updateapp', async (req, res) => {
     try {
-        await client.connect();
+        // Connect to the MongoDB database
+        const client = await MongoClient.connect('mongodb://localhost:27017/');
         const db = client.db('hospital');
         const collection = db.collection('patients');
 
-        const { pproblem, pdescription } = req.body;
-
-        const myobj = { pproblem, pdescription };
-        await collection.updateOne(myobj);
+        const { patientId, pproblem, pdescription, pmorning, mafterfood, pafternoon, aafterfood,  pnight, nafterfood } = req.body;
 
 
-        console.log("1 document inserted");
-        res.redirect('/dapp'); // Redirect after successful insertion
-    } catch (err) {
-        console.error("Error:", err);
-    } finally {
-        await client.close();
+        console.log(patientId);
+        // Update the patient record with the specified patientId
+        const result = await collection.updateOne({ _id: new ObjectId(patientId) }, { $set: { pproblem, pdescription, pmorning, mafterfood, pafternoon, aafterfood,  pnight, nafterfood} });
+
+        // Check if the patient record was updated successfully
+        if (result.modifiedCount === 1) {
+            console.log(`patient with ID ${patientId} updated successfully.`);
+            return res.redirect('/dapp');
+        } else {
+            console.log(`patient with ID ${patientId} not found.`);
+        }
+
+        // Redirect after successful deletion
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return "An error occurred while updating the patient record.";
     }
 });
 
 // -new 
+
+app.post('/updatedoc', uploada.single('dimg'), async (req, res) => {
+    try {
+        // Connect to the MongoDB database
+        const client = await MongoClient.connect('mongodb://localhost:27017/');
+        const db = client.db('hospital');
+        const collection = db.collection('doctors');
+
+        const { doctorId, dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex} = req.body;
+        
+                // Save the filename in the database
+                const dimg = req.file.filename;
+
+        console.log(doctorId);
+        // Update the patient record with the specified patientId
+        const result = await collection.updateOne({ _id: new ObjectId(doctorId) }, { $set: { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg} });
+
+        // Check if the patient record was updated successfully
+        if (result.modifiedCount === 1) {
+            console.log(`patient with ID ${doctorId} updated successfully.`);
+            return res.redirect('/adoc');
+        } else {
+            console.log(`patient with ID ${doctorId} not found.`);
+        }
+
+        // Redirect after successful deletion
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return "An error occurred while updating the patient record.";
+    }
+});
+
+// app.post('/updatedoc', uploada.single('dimg'), async (req, res) => {
+//     try {
+//         // Connect to the MongoDB database
+//         const client = await MongoClient.connect('mongodb://localhost:27017/');
+//         const db = client.db('hospital');
+//         const collection = db.collection('doctors');
+
+//         const { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg } = req.body;
+
+//         // Save the filename in the database
+//         // const dimg = req.file.filename;
+
+// console.log(dimg)
+//         console.log(doctorId);
+//         // Update the patient record with the specified patientId
+//         const result = await collection.updateOne({ _id: new ObjectId(doctorId) }, { $set: { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg} });
+
+//         // Check if the patient record was updated successfully
+//         if (result.modifiedCount === 1) {
+//             console.log(`patient with ID ${doctorId} updated successfully.`);
+//             return res.redirect('/adoc');
+//         } else {
+//             console.log(`patient with ID ${doctorId} not found.`);
+//         }
+
+//         // Redirect after successful deletion
+//     } catch (e) {
+//         console.error(`Error: ${e}`);
+//         return "An error occurred while updating the patient record.";
+//     }
+// });
+
+
+// app.post('/dlogin', async (req, res) => {
+//     const { dusername, dpassword } = req.body;
+  
+//     try {
+//       const user = await doctors.findOne({ dusername });
+//       if (!user) {
+//         return res.status(404).send('User not found');
+//       }
+  
+//       const validPassword = await bcrypt.compare(dpassword, doctors.dpassword);
+//       if (!validPassword) {
+//         return res.status(401).send('Invalid password');
+//       }
+  
+//       res.status(200).send('Login successful');
+//     } catch (error) {
+//       res.status(500).send('Error logging in');
+//     }
+//   });
 
 
 // route

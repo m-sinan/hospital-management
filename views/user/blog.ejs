@@ -91,10 +91,10 @@
 		<!-- Single blog -->
 		<section class="blog-single section p-5">
 			<div class="row row-cols-1 row-cols-md-3 g-4 m-0">
-				<% ublo.forEach(blog => { %>
+				<% ublo.forEach(blog=> { %>
 				<div class="col">
 				  <div class="card h-100">
-					<img src="<%= blog.bimage %>" class="card-img-top" alt="...">
+					<img src="/doctorp/images/blog/<%= blog.bimage %>" alt="blog Image" class="rounded" style="height: 300px; object-fit: cover;">
 					<div class="card-body">
 					  <h5 class="card-title"><%= blog.btitle %></h5>
 					  <p class="card-text"><%= blog.bdescription %></p>
