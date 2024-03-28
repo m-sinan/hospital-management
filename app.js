@@ -504,62 +504,36 @@ app.post('/updatedoc', uploada.single('dimg'), async (req, res) => {
         return "An error occurred while updating the patient record.";
     }
 });
+app.post('/updatesta', uploadb.single('simg'), async (req, res) => {
+    try {
+        // Connect to the MongoDB database
+        const client = await MongoClient.connect('mongodb://localhost:27017/');
+        const db = client.db('hospital');
+        const collection = db.collection('staffs');
 
-// app.post('/updatedoc', uploada.single('dimg'), async (req, res) => {
-//     try {
-//         // Connect to the MongoDB database
-//         const client = await MongoClient.connect('mongodb://localhost:27017/');
-//         const db = client.db('hospital');
-//         const collection = db.collection('doctors');
+        const { staffId, sname, sdepartment, saddress, semail, sbloodgroup, sphone, stiming, ssex} = req.body;
+        
+                // Save the filename in the database
+                const simg = req.file.filename;
 
-//         const { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg } = req.body;
+        console.log(staffId);
+        // Update the patient record with the specified patientId
+        const result = await collection.updateOne({ _id: new ObjectId(staffId) }, { $set: { sname, sdepartment, saddress, semail, sbloodgroup, sphone, stiming, ssex, simg} });
 
-//         // Save the filename in the database
-//         // const dimg = req.file.filename;
+        // Check if the patient record was updated successfully
+        if (result.modifiedCount === 1) {
+            console.log(`patient with ID ${staffId} updated successfully.`);
+            return res.redirect('/asta');
+        } else {
+            console.log(`patient with ID ${staffId} not found.`);
+        }
 
-// console.log(dimg)
-//         console.log(doctorId);
-//         // Update the patient record with the specified patientId
-//         const result = await collection.updateOne({ _id: new ObjectId(doctorId) }, { $set: { dname, dusername, dpassword, ddepartment, daddress, demail, dbloodgroup, dphone, dtiming, dsex, dimg} });
-
-//         // Check if the patient record was updated successfully
-//         if (result.modifiedCount === 1) {
-//             console.log(`patient with ID ${doctorId} updated successfully.`);
-//             return res.redirect('/adoc');
-//         } else {
-//             console.log(`patient with ID ${doctorId} not found.`);
-//         }
-
-//         // Redirect after successful deletion
-//     } catch (e) {
-//         console.error(`Error: ${e}`);
-//         return "An error occurred while updating the patient record.";
-//     }
-// });
-
-
-// app.post('/dlogin', async (req, res) => {
-//     const { dusername, dpassword } = req.body;
-  
-//     try {
-//       const user = await doctors.findOne({ dusername });
-//       if (!user) {
-//         return res.status(404).send('User not found');
-//       }
-  
-//       const validPassword = await bcrypt.compare(dpassword, doctors.dpassword);
-//       if (!validPassword) {
-//         return res.status(401).send('Invalid password');
-//       }
-  
-//       res.status(200).send('Login successful');
-//     } catch (error) {
-//       res.status(500).send('Error logging in');
-//     }
-//   });
-
-
-// route
+        // Redirect after successful deletion
+    } catch (e) {
+        console.error(`Error: ${e}`);
+        return "An error occurred while updating the patient record.";
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

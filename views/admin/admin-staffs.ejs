@@ -109,7 +109,8 @@
               </div>
               <hr>
               <div class="d-flex justify-content-between p-3">
-                <button type="submit" class="btn btn-primary" value="Submit">Edit</button>
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal<%= staffs._id %>">Edit</button>
                 <form action="/deletesta" method="POST">
                   <input type="hidden" value="<%= staffs._id %>" name="staffId">
                   <button type="submit" class="btn btn-danger">delete</button>
@@ -187,6 +188,101 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- molel -->
+          <div class="modal fade" id="exampleModal<%= staffs._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen p-5 pt-2">
+              <div class="modal-content px-5 py-3">
+                <div class="modal-header bg-light">
+                  <h1 class="modal-title fs-5 fw-bolder bg-info text-white px-5 p-2" id="exampleModalLabel">
+                    <%= staffs.sname %>
+                  </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="/updatesta" method="POST" enctype="multipart/form-data">
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs Name</label>
+                        <input type="text" value="<%= staffs.sname %>" class="form-control" name="sname">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs photo</label>
+                        <input type="file" class="form-control"  value="<%= staffs.simg %>" name="simg">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs username</label>
+                        <input type="text" value="<%= staffs.susername %>" class="form-control" name="susername" id="username">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs password</label>
+                        <input type="text" value="<%= staffs.spassword %>" class="form-control" name="spassword" id="password">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staff Department </label>
+                        <input type="text" value="<%= staffs.sdepartment %>" class="form-control" name="sdepartment">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs Address</label>
+                        <input class="form-control" value="<%= staffs.saddress %>" id="productDescription" name="saddress" rows="2"
+                          cols="50"></input>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staff Email</label>
+                        <input type="text" value="<%= staffs.semail %>"  class="form-control" name="semail">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-12">
+                        <label class="form-label">staffs Bloodgroup</label>
+                        <select class="form-select mb-3" name="sbloodgroup" aria-label="Default select example" id="Blood">
+                          <option selected   class="text-dark"><%= staffs.sbloodgroup %></option>
+                          <option value="A+" class="text-dark">A+</option>
+                          <option value="A-" class="text-dark">A-</option>
+                          <option value="B+" class="text-dark">B+</option>
+                          <option value="B-" class="text-dark">B-</option>
+                          <option value="o+" class="text-dark">o+</option>
+                          <option value="o-" class="text-dark">o-</option>
+                          <option value="AB+" class="text-dark">AB+</option>
+                          <option value="AB-" class="text-dark">AB-</option>
+                          <option value="OB+" class="text-dark">OB+</option>
+                          <option value="OB-" class="text-dark">OB-</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">staffs Phone</label>
+                        <input type="text" value="<%= staffs.sphone %>" class="form-control" name="sphone">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">staffs timing</label>
+                        <input type="text" value="<%= staffs.stiming %>" class="form-control" name="stiming">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label class="form-label">Sex</label>
+                        <select class="form-select mb-3" name="ssex" aria-label="Default select example">
+                          <option selected class="text-dark"><%= staffs.ssex %></option>
+                          <option value="male" class="text-dark">Male</option>
+                          <option value="female" class="text-dark">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <input type="hidden" value="<%= staffs._id %>" name="staffId">
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                </div>
+                </form>
               </div>
             </div>
           </div>
